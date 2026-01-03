@@ -20,6 +20,7 @@
   "dependencies": {
     "@justinribeiro/lite-youtube": "^1.9.0",
     "@next/third-parties": "^16.0.6",
+    "country-state-city": "^3.2.1",
     "date-fns": "^4.1.0",
     "github-slugger": "^2.0.0",
     "gray-matter": "^4.0.3",
