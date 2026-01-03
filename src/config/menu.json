@@ -9,25 +9,6 @@
       "url": "/products"
     },
     {
-      "name": "Pages",
-      "url": "",
-      "hasChildren": true,
-      "children": [
-        {
-          "name": "About",
-          "url": "/about"
-        },
-        {
-          "name": "Contact",
-          "url": "/contact"
-        },
-        {
-          "name": "404 Page",
-          "url": "/404"
-        }
-      ]
-    },
-    {
       "name": "Contact",
       "url": "/contact"
     }
