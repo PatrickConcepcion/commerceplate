@@ -114,15 +114,12 @@ const Header: React.FC<{ children: any }> = ({ children }) => {
       className={`header z-30 ${settings.sticky_header && "sticky top-0"} ${navbarShadow ? "shadow-sm" : "shadow-none"}`}
     >
       <nav className="navbar flex-wrap container">
-        <div className="order-1 flex items-center justify-between space-x-7 lg:space-x-14">
-          <Logo />
-
+        <div className="order-1 flex items-center space-x-7 lg:space-x-14">
           <div className="relative z-40 hidden md:block">
             <label
               htmlFor="nav-toggle"
               className="order-3 cursor-pointer flex items-center text-text-dark dark:text-white lg:order-1"
             >
-              <p className="mr-2 font-medium">Pages</p>
               <button
                 id="nav-toggle"
                 className="focus:outline-none"
@@ -190,6 +187,8 @@ const Header: React.FC<{ children: any }> = ({ children }) => {
               </ul>
             </div>
           </div>
+
+          <Logo />
         </div>
 
         <div className="max-lg:mt-4 w-full lg:w-[45%] xl:w-[60%] lg:order-2 order-3">
