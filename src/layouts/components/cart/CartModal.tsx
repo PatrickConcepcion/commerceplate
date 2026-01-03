@@ -175,12 +175,13 @@ export default function CartModal({ cart }: { cart: Cart | undefined }) {
                   />
                 </div>
               </div>
-              <a
-                href={cart.checkoutUrl}
+              <Link
+                href="/checkout"
+                onClick={closeCart}
                 className="block w-full rounded-md bg-dark dark:bg-light p-3 text-center text-sm font-medium text-white dark:text-text-dark opacity-100 hover:opacity-90"
               >
                 Proceed to Checkout
-              </a>
+              </Link>
             </div>
           )}
         </div>
