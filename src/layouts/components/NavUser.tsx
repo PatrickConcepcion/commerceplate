@@ -4,7 +4,7 @@
 import { getUserDetails } from "@/lib/shopify";
 import type { user } from "@/lib/shopify/types";
 import Cookies from "js-cookie";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Gravatar from "react-gravatar";
 import { BsPerson } from "react-icons/bs";
@@ -28,8 +28,12 @@ export const fetchUser = async () => {
 
 const NavUser = () => {
   const pathname = usePathname();
+  const router = useRouter();
   const [user, setUser] = useState<any>();
   const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  // Protected routes that require authentication
+  const protectedRoutes = ['/account', '/orders', '/profile', '/checkout'];
 
   useEffect(() => {
     const getUser = async () => {
@@ -45,6 +49,12 @@ const NavUser = () => {
     localStorage.removeItem("user");
     setUser(null);
     setDropdownOpen(false);
+
+    // If user is on a protected page, redirect to home
+    const isOnProtectedRoute = protectedRoutes.some(route => pathname.startsWith(route));
+    if (isOnProtectedRoute) {
+      router.push('/');
+    }
   };
 
   const toggleDropdown = () => {

@@ -2,13 +2,14 @@
 
 import { CustomerError } from "@/lib/shopify/types";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { BiLoaderAlt } from "react-icons/bi";
 import { FormData } from "../sign-up/page";
 
 const Login = () => {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [formData, setFormData] = useState<FormData>({
     email: "",
     password: "",
@@ -44,7 +45,13 @@ const Login = () => {
         setErrorMessages([]);
         const data = responseData;
         localStorage.setItem("user", JSON.stringify(data));
-        router.push("/");
+        // Redirect to intended page or home
+        const redirect = searchParams.get('redirect') || '/';
+        // Validate redirect is a relative path to prevent open redirect attacks
+        const redirectTo = redirect.startsWith('/') && !redirect.startsWith('//') 
+          ? redirect 
+          : '/';
+        router.push(redirectTo);
       } else {
         const errors = responseData.errors || [];
         setErrorMessages(errors);
