@@ -122,6 +122,7 @@ const Header: React.FC<{ children: any }> = ({ children }) => {
             >
               <button
                 id="nav-toggle"
+                aria-label="Toggle Sidebar"
                 className="focus:outline-none"
                 onClick={handleToggleSidebar}
               >
